@@ -97,6 +97,17 @@ else
   endif
 endif
 
+# posix thread (pthread) support
+ifeq ($(strip $(ENABLE_PTHREAD)),true)
+ifneq (1,$(words $(filter $(LOCAL_DISABLE_PTHREAD),$(LOCAL_MODULE))))
+  ifdef LOCAL_CFLAGS
+    LOCAL_CFLAGS += -pthread
+  else
+    LOCAL_CFLAGS := -pthread
+  endif
+endif
+endif
+
 # Have anything that builds with libtinycompress as a shared lib use kernel headers.
 ifdef LOCAL_SHARED_LIBRARIES
   ifeq (1,$(words $(filter libtinycompress, $(LOCAL_SHARED_LIBRARIES))))
