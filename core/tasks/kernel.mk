@@ -113,6 +113,8 @@ KERNEL_HEADERS_INSTALL := $(KERNEL_OUT)/usr
 KERNEL_MODULES_INSTALL := system
 KERNEL_MODULES_OUT := $(TARGET_OUT)/lib/modules
 
+TARGET_KERNEL_DEFAULT_TOOLCHAIN := arm-eabi-4.8
+
 ifneq ($(TARGET_KERNEL_CUSTOM_TOOLCHAIN),)
 	ifeq ($(HOST_OS),darwin)
 		ARM_EABI_STRIP:=$(ANDROID_BUILD_TOP)/prebuilts/gcc/darwin-x86/arm/$(TARGET_KERNEL_CUSTOM_TOOLCHAIN)/bin/arm-eabi-strip
@@ -159,7 +161,7 @@ ifeq ($(TARGET_ARCH),arm)
             ARM_CROSS_COMPILE:=CROSS_COMPILE="$(ccache) $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/$(TARGET_KERNEL_CUSTOM_TOOLCHAIN)/bin/arm-eabi-"
         endif
     else
-        ARM_CROSS_COMPILE:=CROSS_COMPILE="$(ccache) $(ARM_EABI_TOOLCHAIN)/arm-eabi-"
+        ARM_CROSS_COMPILE:=CROSS_COMPILE="$(ccache) $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/$(TARGET_KERNEL_DEFAULT_TOOLCHAIN)/bin/arm-eabi-"
     endif
     ccache = 
 endif
