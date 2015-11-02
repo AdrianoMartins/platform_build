@@ -98,7 +98,9 @@ LOCAL_DISABLE_STRICT := \
 	linker \
 	sensors.flounder \
 	libnvvisualizer \
-	libskia
+	libskia \
+	fio \
+	tcpdump
 
 LOCAL_FORCE_DISABLE_STRICT := \
 	libziparchive-host \
