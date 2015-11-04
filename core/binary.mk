@@ -30,6 +30,22 @@ else
   endif
 endif
 
+# Have anything that builds with libtinycompress as a shared lib use kernel headers.
+ifdef LOCAL_SHARED_LIBRARIES
+  ifeq (1,$(words $(filter libtinycompress, $(LOCAL_SHARED_LIBRARIES))))
+    ifdef LOCAL_C_INCLUDES
+      LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+    else
+      LOCAL_C_INCLUDES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+    endif
+    ifdef LOCAL_ADDITIONAL_DEPENDENCIES
+      LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+    else
+      LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+    endif
+  endif
+endif
+
 # Copyright (C) 2014-2015 UBER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
