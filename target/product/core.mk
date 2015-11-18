@@ -25,7 +25,6 @@ PRODUCT_PACKAGES += \
     CalendarProvider \
     CaptivePortalLogin \
     CertInstaller \
-    Contacts \
     DocumentsUI \
     DownloadProviderUi \
     ExternalStorageProvider \
@@ -40,10 +39,7 @@ PRODUCT_PACKAGES += \
     ProxyHandler \
     Settings \
     SharedStorageBackup \
-    Telecom \
-    TeleService \
     VpnDialogs \
-    MmsService \
     WebViewGoogle
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_base.mk)
