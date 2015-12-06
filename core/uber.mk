@@ -151,7 +151,8 @@ LOCAL_DISABLE_KRAIT := \
 	bluetooth.default \
 	libwebviewchromium \
 	libwebviewchromium_loader \
-	libwebviewchromium_plat_support
+	libwebviewchromium_plat_support \
+	libavcodec
 
 KRAIT_FLAGS := \
 	-mcpu=cortex-a15 \
@@ -164,7 +165,8 @@ LOCAL_DISABLE_GCCONLY := \
 	bluetooth.default \
 	libwebviewchromium \
 	libwebviewchromium_loader \
-	libwebviewchromium_plat_support
+	libwebviewchromium_plat_support \
+	libavcodec
 
 ifeq (arm,$(TARGET_ARCH))
 GCC_ONLY := \
@@ -222,7 +224,10 @@ LOCAL_DISABLE_GRAPHITE := \
 	libwebrtc_spl \
 	libpcap \
 	libFraunhoferAAC \
-	libhwui
+	libhwui \
+	libavcodec \
+	libswscale \
+	libavformat
 
 GRAPHITE_FLAGS := \
 	-fgraphite \
