@@ -21,6 +21,8 @@ PRODUCT_PACKAGES := \
     Bluetooth \
     BluetoothMidiService \
     Gallery2 \
+    OneTimeInitializer \
+    Provision \
     SystemUI \
     WallpaperCropper
 
