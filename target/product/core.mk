@@ -39,8 +39,6 @@ PRODUCT_PACKAGES += \
     ProxyHandler \
     Settings \
     SharedStorageBackup \
-    Telecom \
-    TeleService \
     VpnDialogs \
     WebViewGoogle
 
