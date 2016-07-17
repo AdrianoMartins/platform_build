@@ -252,6 +252,16 @@ endif
 
 #####
 
+#### Disable all warnings error
+
+my_ldflags += -Wno-error
+my_cppflags += -Wno-error
+my_cflags += -Wno-error
+my_asflags += -Wno-error
+my_conlyflags += -Wno-error
+
+####
+
 ifdef LOCAL_IS_HOST_MODULE
 my_allow_undefined_symbols := true
 else
