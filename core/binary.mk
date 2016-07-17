@@ -231,6 +231,27 @@ my_native_coverage := $(LOCAL_NATIVE_COVERAGE)
 my_additional_dependencies := $(LOCAL_MODULE_MAKEFILE) $(LOCAL_ADDITIONAL_DEPENDENCIES)
 my_export_c_include_dirs := $(LOCAL_EXPORT_C_INCLUDE_DIRS)
 
+###############
+# Cortex String
+###############
+
+DISABLE_CORTEX_STRINGS := camera.msm8960 gps.msm8960 gralloc.msm8960
+
+# Link binaries with Cortex string routines
+ifndef LOCAL_IS_HOST_MODULE
+  ifeq ($(filter $(DISABLE_CORTEX_STRINGS), $(LOCAL_MODULE)),)
+    my_ldflags += -L$(BUILD_SYSTEM)/../libs/$(TARGET_ARCH) -lcortex-strings
+    ifneq ($(filter krait a9 a15, $(LOCAL_MODULE)),)
+      my_ldflags += -lbionic-$(TARGET_CPU_VARIANT)
+    endif
+    ifeq ($(TARGET_2ND_CPU_VARIANT), cortex-a53.a57)
+      my_ldflags += -lbionic-a15
+    endif
+  endif
+endif
+
+#####
+
 ifdef LOCAL_IS_HOST_MODULE
 my_allow_undefined_symbols := true
 else
