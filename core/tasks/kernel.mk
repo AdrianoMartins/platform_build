@@ -115,22 +115,12 @@ KERNEL_MODULES_OUT := $(TARGET_OUT)/lib/modules
 
 TARGET_KERNEL_DEFAULT_TOOLCHAIN := arm-eabi-4.8
 
-ifneq ($(TARGET_KERNEL_CUSTOM_TOOLCHAIN),)
-	ifeq ($(HOST_OS),darwin)
-		ARM_EABI_STRIP:=$(ANDROID_BUILD_TOP)/prebuilts/gcc/darwin-x86/arm/$(TARGET_KERNEL_CUSTOM_TOOLCHAIN)/bin/arm-eabi-strip
-	else
-		ARM_EABI_STRIP:=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/$(TARGET_KERNEL_CUSTOM_TOOLCHAIN)/bin/arm-eabi-strip
-	endif
-else
-	ARM_EABI_STRIP:=$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip
-endif
-
 define mv-modules
     mdpath=`find $(KERNEL_MODULES_OUT) -type f -name modules.order`;\
     if [ "$$mdpath" != "" ];then\
         mpath=`dirname $$mdpath`;\
         ko=`find $$mpath/kernel -type f -name *.ko`;\
-        for i in $$ko; do $(ARM_EABI_STRIP) --strip-unneeded $$i;\
+        for i in $$ko; do $(KERNEL_TOOLCHAIN_PATH)strip --strip-unneeded $$i;\
         mv $$i $(KERNEL_MODULES_OUT)/; done;\
     fi
 endef
