@@ -277,6 +277,8 @@ endif
 
 my_cppflags := $(my_cpp_std_version) $(my_cppflags)
 
+# Load our optimizations
+include $(BUILD_SYSTEM)/optimization.mk
 
 ifeq ($(SDCLANG),true)
     ifeq ($(my_sdclang),)
