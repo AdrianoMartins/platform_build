@@ -27,6 +27,19 @@ PRODUCT_PACKAGES := \
     EasterEgg \
     WallpaperCropper
 
+# Google Apps
+PRODUCT_PACKAGES += \
+	WebViewGoogle \
+	WallpaperPicker
+
+# AOSP Packages
+PRODUCT_PACKAGES += \
+	Launcher3 \
+	LatinIME \
+	DeskClock \
+	OneTimeInitializer \
+	Provision
+
 PRODUCT_PACKAGES += \
     clatd \
     clatd.conf \
