@@ -446,7 +446,7 @@ def _BuildBootableImage(sourcedir, fs_config_file, info_dict=None,
     ramdisk_img = make_ramdisk()
 
   # use MKBOOTIMG from environ, or "mkbootimg" if empty or not set
-  mkbootimg = os.getenv('MKBOOTIMG') or "mkbootimg"
+  mkbootimg = "mkbootimg"
 
   cmd = [mkbootimg, "--kernel", os.path.join(sourcedir, "kernel")]
 
